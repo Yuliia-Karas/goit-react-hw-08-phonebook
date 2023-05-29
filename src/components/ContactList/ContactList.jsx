@@ -1,14 +1,21 @@
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts }) => (
-    <ul>
-        {contacts.map(({ id, name }) => (
-            <li key={id}>
-                {name}
-            </li>
+
+class ContactList extends Component {
+  render() {
+    const { contacts } = this.props;
+
+    return (
+      <ul>
+        {contacts.map((contact) => (
+          <li key={contact.id}>{contact.name}</li>
         ))}
-    </ul>
-);
+      </ul>
+    );
+  }
+}
+
     
     
 // ContactList.propTypes = {

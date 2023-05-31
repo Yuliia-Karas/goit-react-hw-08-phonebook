@@ -17,7 +17,7 @@ class App extends Component {
 
   addContact = contact => {
     console.log(contact);
-    if (this.state.contacts.find(cont => cont.name === contact.name)) { 
+    if (this.state.contacts.find(cont => cont.name === contact.name)) {
       alert(`${contact.name} is already in contacts`);
     } else {
       this.setState(prevState => ({
@@ -38,18 +38,24 @@ class App extends Component {
     );
   };
 
+  deleteContact = idContact => {
+     this.setState(prevState => ({
+         contacts: prevState.contacts.filter(cont => cont.id !== idContact),
+       }));
+  };
+
   render() {
     const { filter } = this.state;
     const FilterContacts = this.getFilterContacts();
 
     return (
       <div className={css.container}>
-        <h1>Phonebook 5</h1>
+        <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
 
         <h2>Contacts</h2>
         <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
-        <ContactList contacts={FilterContacts} />
+        <ContactList contacts={FilterContacts} onDelete={this.deleteContact} />
       </div>
     );
   }

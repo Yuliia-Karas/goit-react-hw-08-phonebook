@@ -13,9 +13,7 @@ class App extends Component {
     this.state = {
       contacts,
       filter: '',
-      name: '',
-      number: '',
-    };
+          };
   }
 
 

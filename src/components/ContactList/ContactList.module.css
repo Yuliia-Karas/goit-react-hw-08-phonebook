@@ -1,0 +1,22 @@
+.contacts {
+    color: rgb(75, 38, 24); 
+    font-size: 10px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.contacts:hover {
+    background-color: rgb(240, 218, 213);
+}
+
+.button {
+    background-color: rgb(201, 151, 133); 
+    color: beige;
+    font-size: 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+}

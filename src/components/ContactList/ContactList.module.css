@@ -20,3 +20,8 @@
     border-radius: 2px;
     border: none;
 }
+
+.contact-params {
+    display: flex;
+    gap: 10px;
+}

@@ -10,14 +10,14 @@ class ContactList extends Component {
       <ul>
         {contacts.map(contact => (
           <li className={css.contacts} key={contact.id}>
-            {contact.name}:<span> {contact.number}</span>
+            {contact.name}:<div className={css["contact-params"]}> <span> {contact.number}</span>
             <button
               className={css.button}
               type="submit"
               onClick={() => onDelete(contact.id)}
             >
               Delete
-            </button>
+            </button> </div>
           </li>
         ))}
       </ul>
@@ -28,7 +28,7 @@ class ContactList extends Component {
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     })
   ).isRequired,

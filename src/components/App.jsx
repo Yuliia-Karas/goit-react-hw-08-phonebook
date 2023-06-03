@@ -3,14 +3,14 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
-import contacts from '../static/contacts.json';
+// import contacts from '../static/contacts.json';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      contacts,
+      contacts: JSON.parse(localStorage.getItem('contacts'))||[] ,
       filter: '',
     };
   }
@@ -24,6 +24,13 @@ class App extends Component {
       }));
     }
   };
+
+  // Запис в LocalStotage
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleChangeFilter = event => {
     this.setState({ filter: event.target.value });

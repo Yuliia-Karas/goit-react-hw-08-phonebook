@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import { Filter } from './Filter/Filter';
@@ -10,14 +12,14 @@ class App extends Component {
     super(props);
 
     this.state = {
-      contacts: JSON.parse(localStorage.getItem('contacts'))||[] ,
+      contacts: JSON.parse(localStorage.getItem('contacts')) || [],
       filter: '',
     };
   }
 
   addContact = contact => {
     if (this.state.contacts.find(cont => cont.name === contact.name)) {
-      alert(`${contact.name} is already in contacts`);
+      toast.error(`${contact.name} is already in contacts`);
     } else {
       this.setState(prevState => ({
         contacts: [...prevState.contacts, contact],
@@ -62,6 +64,19 @@ class App extends Component {
         <h2 className={css['contact-header']}>Contacts</h2>
         <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
         <ContactList contacts={FilterContacts} onDelete={this.deleteContact} />
+        <ToastContainer
+          className={css.toast}
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     );
   }

@@ -11,10 +11,19 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+const CONTACTS = 'contacts';
+
     this.state = {
-      contacts: JSON.parse(localStorage.getItem('contacts')) || [],
+      contacts: JSON.parse(localStorage.getItem(CONTACTS)) || [],
       filter: '',
     };
+  }
+
+  // Запис в LocalStotage
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(this.CONTACTS, JSON.stringify(this.state.contacts));
+    }
   }
 
   addContact = contact => {
@@ -26,13 +35,6 @@ class App extends Component {
       }));
     }
   };
-
-  // Запис в LocalStotage
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
 
   handleChangeFilter = event => {
     this.setState({ filter: event.target.value });

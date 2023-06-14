@@ -21,7 +21,11 @@ export default function App() {
   }, [contacts]);
 
   const addContact = contact => {
-    if (contacts.find(cont => cont.name === contact.name)) {
+    if (
+      contacts.find(
+        cont => cont.name.toLowerCase() === contact.name.toLowerCase()
+      )
+    ) {
       toast.error(`${contact.name} is already in contacts`);
     } else {
       setContacts(prevState => [...prevState, contact]);

@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+// import React, { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
+import { addContact, deleteContact } from 'redux/contactsSlice';
+import { getСontacts, getFilter } from 'redux/selectors';
+
 export default function App() {
-  const CONTACTS = 'contacts';
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem(CONTACTS)) || []
-  );
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+  const { contacts } = useSelector(getСontacts);
+  const { filter } = useSelector(getFilter);
 
-  // Запис в LocalStotage
-  useEffect(() => {
-    if (setContacts !== contacts) {
-      localStorage.setItem(CONTACTS, JSON.stringify(contacts));
-    }
-  }, [contacts]);
+  const toDeleteContact = contactId => {
+    dispatch(deleteContact(contactId));
+  };
 
-  const addContact = contact => {
-    if (
+  const toAddContact = ({  name, number }) => {
+     if (
       contacts.find(
-        cont => cont.name.toLowerCase() === contact.name.toLowerCase()
+        contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
-      toast.error(`${contact.name} is already in contacts`);
-    } else {
-      setContacts(prevState => [...prevState, contact]);
+      alert(`${name} is already in contacts`);
+      return;
     }
+
+    dispatch(addContact(name, number));
   };
 
-  const handleChangeFilter = event => {
-    setFilter(event.target.value);
-  };
+  const handleChangeFilter = event =>
+    dispatch(setFilter(event.currentTarget.value));
+
+  
 
   const getFilterContacts = () => {
     const filterlowerCase = filter.toLowerCase();
@@ -43,33 +45,29 @@ export default function App() {
     );
   };
 
-  const deleteContact = idContact => {
-    setContacts(prevState => prevState.filter(cont => cont.id !== idContact));
-  };
+  const filtredContacts = getFilterContacts();
 
-  const FilterContacts = getFilterContacts();
+    return (
+      <div className={css.container}>
+        <h1>Phonebook</h1>
+        <ContactForm addContact={toAddContact} />
 
-  return (
-    <div className={css.container}>
-      <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
-
-      <h2 className={css['contact-header']}>Contacts</h2>
-      <Filter value={filter} handleChangeFilter={handleChangeFilter} />
-      <ContactList contacts={FilterContacts} onDelete={deleteContact} />
-      <ToastContainer
-        className={css.toast}
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-    </div>
-  );
+        <h2 className={css['contact-header']}>Contacts</h2>
+        <Filter value={filter} handleChangeFilter={handleChangeFilter} />
+        <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />
+        <ToastContainer
+          className={css.toast}
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </div>
+    );
 }

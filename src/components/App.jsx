@@ -20,8 +20,8 @@ export default function App() {
     dispatch(deleteContact(contactId));
   };
 
-  const toAddContact = ({  name, number }) => {
-     if (
+  const toAddContact = ({ name, number }) => {
+    if (
       contacts.find(
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
@@ -36,8 +36,6 @@ export default function App() {
   const handleChangeFilter = event =>
     dispatch(setFilter(event.currentTarget.value));
 
-  
-
   const getFilterContacts = () => {
     const filterlowerCase = filter.toLowerCase();
     return contacts.filter(({ name }) =>
@@ -47,27 +45,27 @@ export default function App() {
 
   const filtredContacts = getFilterContacts();
 
-    return (
-      <div className={css.container}>
-        <h1>Phonebook</h1>
-        <ContactForm addContact={toAddContact} />
+  return (
+    <div className={css.container}>
+      <h1>Phonebook</h1>
+      <ContactForm addContact={toAddContact} />
 
-        <h2 className={css['contact-header']}>Contacts</h2>
-        <Filter value={filter} handleChangeFilter={handleChangeFilter} />
-        <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />
-        <ToastContainer
-          className={css.toast}
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-      </div>
-    );
+      <h2 className={css['contact-header']}>Contacts</h2>
+      <Filter value={filter} handleChangeFilter={handleChangeFilter} />
+      <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />
+      <ToastContainer
+        className={css.toast}
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
+    </div>
+  );
 }

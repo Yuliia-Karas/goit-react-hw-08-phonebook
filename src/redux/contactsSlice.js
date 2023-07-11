@@ -13,9 +13,13 @@ export const contactsSlice = createSlice({
     addContact(state, action) {
       const payload = action.payload;
       const randomId = nanoid();
-      state.contacts.push({ name: payload.name, number: payload.number, id: randomId });
+      state.contacts.push({
+        name: payload.name,
+        number: payload.number,
+        id: randomId,
+      });
     },
-    
+
     deleteContact(state, action) {
       const index = state.contacts.findIndex(
         contact => contact.id === action.payload

@@ -1,5 +1,5 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-// import { nanoid } from 'nanoid';
+import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 import { CONTACTS } from './constants';
 
 const initialState = {
@@ -11,19 +11,11 @@ export const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContact(state, action) {
-      console.log(state, action);
-
-      state.contacts.push(action.payload);
+      const payload = action.payload;
+      const randomId = nanoid();
+      state.contacts.push({ name: payload.name, number: payload.number, id: randomId });
     },
-    // prepare(name, number) {
-    //   return {
-    //     patload: {
-    //       id: nanoid(),
-    //       name,
-    //       number,
-    //     },
-    //   };
-    // },
+    
     deleteContact(state, action) {
       const index = state.contacts.findIndex(
         contact => contact.id === action.payload

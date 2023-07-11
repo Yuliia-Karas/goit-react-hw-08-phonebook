@@ -30,7 +30,7 @@ export default function App() {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, number }));
   };
 
   const handleChangeFilter = event =>

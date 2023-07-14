@@ -6,18 +6,34 @@ import { Filter } from './Filter/Filter';
 import css from './App.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+  selectFilter,
+} from 'redux/selectors';
 import { setFilter } from 'redux/filterSlice';
-import { addContact, deleteContact } from 'redux/contactsSlice';
-import { getСontacts, getFilter } from 'redux/selectors';
+// import { addContact, deleteContact } from 'redux/contactsSlice';
+// import { getСontacts, getFilter } from 'redux/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getСontacts);
-  const { filter } = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-  const toDeleteContact = contactId => {
-    dispatch(deleteContact(contactId));
-  };
+  useEffect(() => {
+    dispatch(fetchContacts());
+    
+  }, [dispatch]);
+  
+  
+   const toDeleteContact = contactId => {
+     dispatch(deleteContact(contactId));
+   };
 
   const toAddContact = ({ name, number }) => {
     if (
@@ -48,9 +64,9 @@ export default function App() {
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm addContact={toAddContact} />
-
       <h2 className={css['contact-header']}>Contacts</h2>
       <Filter value={filter} handleChangeFilter={handleChangeFilter} />
+      {isLoading&&!error&&<p>Loading...</p>}
       <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />
       <ToastContainer
         className={css.toast}

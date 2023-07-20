@@ -15,8 +15,12 @@ import {
   selectFilter,
 } from 'redux/selectors';
 import { setFilter } from 'redux/filterSlice';
-// import { addContact, deleteContact } from 'redux/contactsSlice';
-// import { getСontacts, getFilter } from 'redux/selectors';
+
+import { Route, Routes } from 'react-router-dom';
+import Home from 'pages/Home';
+import Contacts from 'pages/Contacts';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
 
 export default function App() {
   const dispatch = useDispatch();

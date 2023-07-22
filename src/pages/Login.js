@@ -1,10 +1,17 @@
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import React from 'react';
 
 export default function Login() {
   return (
     <>
-          <form style={{display:'flex', flexDirection:'column', width:'320px', margin:'0 auto'} }>
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '320px',
+          margin: '0 auto',
+        }}
+      >
         <TextField
           id="standard-basic"
           label="email"
@@ -17,7 +24,9 @@ export default function Login() {
           variant="standard"
           type="password"
         />
-        <button type="submit">Login</button>
+        <Button style={{ marginTop: '20px' }} variant="outlined">
+          Login
+        </Button>
       </form>
     </>
   );

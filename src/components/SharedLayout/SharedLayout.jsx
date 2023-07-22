@@ -96,7 +96,7 @@ function SharedLayout() {
               >
                 {pages.map(page => (
                   <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                    <Link to={page.path} textAlign="center">
+                    <Link to={page.path} >
                       {page.title}
                     </Link>
                   </MenuItem>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
+import { Button, TextField } from '@mui/material';
 
 export default function ContactForm(props) {
   const [name, setName] = useState('');
@@ -34,38 +35,42 @@ export default function ContactForm(props) {
 
   return (
     <form onSubmit={handleSubmit} className={css['contact-form-container']}>
-      <label className={css.form}>
-        Name
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          placeholder="Enter name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={handleChangeName}
-        />
-      </label>
-      <label className={css.form}>
-        Number
-        <input
-          className={css.input}
-          type="tel"
-          name="number"
-          placeholder="Enter phone number"
-          pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={number}
-          onChange={handleChangeNumber}
-        />
-      </label>
-
-      <button className={css['add-button']} type="submit">
+      <TextField
+        id="filled-basic"
+        label="Name"
+        variant="standard"
+        type="text"
+        name="name"
+        placeholder="Enter name"
+        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        value={name}
+        onChange={handleChangeName}
+      />
+      <TextField
+        id="standard-basic"
+        label="Number"
+        variant="standard"
+        type="tel"
+        name="number"
+        placeholder="Enter phone number"
+        pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+        value={number}
+        onChange={handleChangeNumber}
+      />
+      <Button
+        style={{
+          marginTop: 20,
+                 }}
+        variant="contained"
+        disableElevation
+        type="submit"
+      >
         Add Contact
-      </button>
+      </Button>
     </form>
   );
 }

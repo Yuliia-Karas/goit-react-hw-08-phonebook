@@ -1,53 +1,56 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { Link, Outlet } from 'react-router-dom';
+// import * as React from 'react';
+// import AppBar from '@mui/material/AppBar';
+// import Box from '@mui/material/Box';
+// import Toolbar from '@mui/material/Toolbar';
+// import IconButton from '@mui/material/IconButton';
+// import Typography from '@mui/material/Typography';
+// import Menu from '@mui/material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
+// import Container from '@mui/material/Container';
+// import Avatar from '@mui/material/Avatar';
+// import Tooltip from '@mui/material/Tooltip';
+// import MenuItem from '@mui/material/MenuItem';
+// import AdbIcon from '@mui/icons-material/Adb';
+// import { Link, Outlet } from 'react-router-dom';
 
-const pages = [
-  { title: 'Home', path: '/' },
-  { title: 'Register', path: '/register' },
-  { title: 'Login', path: '/login' },
-  { title: 'Contacts', path: '/contacts' },
-];
+// const pages = [
+//   { title: 'Home', path: '/' },
+//   { title: 'Register', path: '/register' },
+//   { title: 'Login', path: '/login' },
+//   { title: 'Contacts', path: '/contacts' },
+// ];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function SharedLayout() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+// function SharedLayout() {
 
-  const handleOpenNavMenu = event => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = event => {
-    setAnchorElUser(event.currentTarget);
-  };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+//   const [setAnchorElNav] = React.useState(null);
+//   const [anchorElNav, setAnchorElNav] = React.useState(null);
+//   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+//   const handleOpenNavMenu = event => {
+//     setAnchorElNav(event.currentTarget);
+//   };
+//   const handleOpenUserMenu = event => {
+//     setAnchorElUser(event.currentTarget);
+//   };
 
-  return (
-    <div>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
+//   const handleCloseNavMenu = () => {
+//     setAnchorElNav(null);
+//   };
+
+//   const handleCloseUserMenu = () => {
+//     setAnchorElUser(null);
+//   };
+
+//   return (
+//     <div>
+//       <AppBar position="static">
+//         <Container maxWidth="xl">
+//           <Toolbar disableGutters>
+            /* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */
+            /* <Typography
               variant="h6"
               noWrap
               component="a"
@@ -63,9 +66,9 @@ function SharedLayout() {
               }}
             >
               LOGO
-            </Typography>
+            </Typography> */
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            /* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -102,9 +105,9 @@ function SharedLayout() {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
+            </Box> */
+            /* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */
+            /* <Typography
               variant="h5"
               noWrap
               component="a"
@@ -121,21 +124,21 @@ function SharedLayout() {
               }}
             >
               LOGO
-            </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map(page => (
-                <Link
-                  to={page.path}
-                  key={page.title}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page.title}
-                </Link>
-              ))}
-            </Box>
+            </Typography> */
+            // <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            //   {pages.map(page => (
+            //     <Link
+            //       to={page.path}
+            //       key={page.title}
+            //       onClick={handleCloseNavMenu}
+            //       sx={{ my: 2, color: 'white', display: 'block' }}
+            //     >
+            //       {page.title}
+            //     </Link>
+            //   ))}
+            // </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            /* <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -163,14 +166,29 @@ function SharedLayout() {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-      <main>
+            </Box> */
+//           </Toolbar>
+//         </Container>
+//       </AppBar>
+//       <main>
+//         <Outlet />
+//       </main>
+//     </div>
+//   );
+// }
+// export default SharedLayout;
+
+import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import AppBar from 'components/AppBar/AppBar';
+
+export default function SharedLayout() {
+  return (
+    <div>
+      <AppBar />
+      <Suspense fallback={null}>
         <Outlet />
-      </main>
+      </Suspense>
     </div>
   );
 }
-export default SharedLayout;

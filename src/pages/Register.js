@@ -9,12 +9,10 @@ export default function Register() {
     e.preventDefault();
     const name = e.target.elements.name.value;
     const email = e.target.elements.email.value;
-      const password = e.target.elements.password.value;
-       console.log('hello');
-      dispatch(register({ name, email, password }));
-     
-    };
-    
+    const password = e.target.elements.password.value;
+    dispatch(register({ name, email, password }));
+  };
+
   return (
     <>
       <form
@@ -23,6 +21,7 @@ export default function Register() {
           flexDirection: 'column',
           width: '320px',
           margin: '0 auto',
+          marginTop: '30px',
         }}
         onSubmit={handleSubmit}
       >
@@ -47,7 +46,7 @@ export default function Register() {
           type="password"
           name="password"
         />
-        <Button style={{ marginTop: '20px' }} variant="outlined">
+        <Button style={{ marginTop: '20px' }} variant="outlined" type="submit">
           Register
         </Button>
       </form>

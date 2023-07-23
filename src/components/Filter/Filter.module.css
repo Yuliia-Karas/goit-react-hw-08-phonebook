@@ -1,15 +1,8 @@
-.filter {
-    width: 292px;
-    font-weight: 100;
-    font-size: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    
+.contact-form-container {
+    display: flex;
+    flex-direction: column;
 }
 
-.title {
-    font-size: 8px;
-    font-weight: 400;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.textfield {
+    padding-bottom: 20px;
 }

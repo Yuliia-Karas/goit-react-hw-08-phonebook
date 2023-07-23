@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import css from './App.module.css';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
-import css from '../components/App.module.css'
+// import css from '../components/App/App.module.css'
+import css from '../../components/App/App.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -16,6 +16,7 @@ import {
 } from 'redux/selectors';
 import { fetchContacts, addContact, deleteContact } from 'redux/operations';
 import { setFilter } from 'redux/filterSlice';
+import { ContactsHeader, ContactsSubHeader } from './Contacts.styled';
 
 export default function Contacts() {
   const contacts = useSelector(selectContacts);
@@ -58,9 +59,11 @@ export default function Contacts() {
 
   return (
     <div className={css.container}>
-      <h1>Phonebook</h1>
+      <ContactsHeader>Phonebook</ContactsHeader>
       <ContactForm addContact={toAddContact} />
-      <h2 className={css['contact-header']}>Contacts</h2>
+      <ContactsSubHeader>
+        Contacts
+      </ContactsSubHeader>
       <Filter value={filter} handleChangeFilter={handleChangeFilter} />
       {isLoading && !error && <p>Loading...</p>}
       <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />

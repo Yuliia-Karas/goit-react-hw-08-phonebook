@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
-// import css from '../components/App/App.module.css'
 import css from '../../components/App/App.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,9 +60,7 @@ export default function Contacts() {
     <div className={css.container}>
       <ContactsHeader>Phonebook</ContactsHeader>
       <ContactForm addContact={toAddContact} />
-      <ContactsSubHeader>
-        Contacts
-      </ContactsSubHeader>
+      <ContactsSubHeader>Contacts</ContactsSubHeader>
       <Filter value={filter} handleChangeFilter={handleChangeFilter} />
       {isLoading && !error && <p>Loading...</p>}
       <ContactList contacts={filtredContacts} onDelete={toDeleteContact} />

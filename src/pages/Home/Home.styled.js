@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const HomeContainer = styled.div`
- display: flex;
- flex-direction:column;
- align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const LinkContainer = styled.div`
@@ -13,7 +13,6 @@ export const LinkContainer = styled.div`
   gap: 20px;
 `;
 
-
 export const Greeting = styled.h1`
   margin: 10px 0;
   font-size: 20px;
@@ -22,11 +21,10 @@ export const Greeting = styled.h1`
   text-align: center;
 `;
 
-
 export const Text = styled.p`
   margin: 10px 0;
   font-size: 16px;
   font-weight: bold;
   color: #3498db;
-  text-align:center;
+  text-align: center;
 `;

@@ -16,7 +16,3 @@ export const useAuth = () => {
     user,
   };
 };
-
-
-
-

@@ -16,7 +16,6 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { refreshUser } from 'redux/auth/authOperations';
 
-
 export default function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -73,4 +72,3 @@ export default function App() {
     </>
   );
 }
-

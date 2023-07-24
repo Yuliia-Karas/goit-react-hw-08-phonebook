@@ -1,6 +1,5 @@
 import { AppBar, Box, Button, Toolbar } from '@mui/material';
-// import { AuthContainer, Nav } from './AuthNav.styled';
-import {  Nav } from './AuthNav.styled';
+import { Nav } from './AuthNav.styled';
 
 export const AuthNav = () => {
   return (
@@ -17,10 +16,5 @@ export const AuthNav = () => {
         </Toolbar>
       </AppBar>
     </Box>
-
-    // <AuthContainer>
-    //   <Nav to="/register">Register</Nav>
-    //   <Nav to="/login">Log In</Nav>
-    // </AuthContainer>
   );
 };
